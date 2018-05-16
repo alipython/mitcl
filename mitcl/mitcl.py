@@ -53,9 +53,6 @@ set env
 """
 def setenv():
     """set some basic env pargs"""
-    global MITCL
-    MITCL = os.path.join(os.environ['HOME'], '.mitcl')
-    check_and_make_dir(MITCL)
     global CIN
     if sys.version > '3':
         CIN = input
@@ -235,8 +232,8 @@ def update_database():
         url = re.findall(P_['url'], i)[0]
         text = re.findall(P_['atxt'], i)[0].strip()
         select_qualified_data(text.strip(), url.strip())  
-
-    with open(os.path.join(MITCL, 'mitcl.dat'), 'wb') as data:
+    path = os.path.join(os.path.dirname(__file__), 'data', 'mitcl.dat')  
+    with open(path, 'wb') as data:
         pickle.dump([DEPARTMENTS, REF_COURSES], data, protocol=2)
 
 def clear_datas():
@@ -259,9 +256,9 @@ def select_qualified_data(text, url):
 def load():
     """load database from json file"""
     global DEPARTMENTS, REF_COURSES
-    log = os.path.join(MITCL, 'mitcl.dat')
-    if os.path.exists(log):
-        with open(log, 'r') as data:
+    path = os.path.join(os.path.dirname(__file__), 'data', 'mitcl.dat')
+    if os.path.exists(path):
+        with open(path, 'r') as data:
             DEPARTMENTS, REF_COURSES = pickle.load(data)
     else:
         print("download course database for first time")
