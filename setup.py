@@ -21,11 +21,12 @@ setup(
     #
     include_package_data=True,
     name='mitcl',
-    version='1.0.5',
+    version='1.1.0',
     description='MIT OCW check and download',
     license='MIT',
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
         'Topic :: Software Development :: Build Tools',
     	'Programming Language :: Python :: 2',
     	'Programming Language :: Python :: 2.7',

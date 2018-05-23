@@ -1,3 +1,4 @@
 build/
 dist/
-*.dat
+*.pyc
+mitcl.egg-info/
